@@ -23,16 +23,23 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                         width: 130,
-                        child: Image.asset('assets/details.png'),
+                        child: Center(
+                          child: Text(
+                            'Details',
+                            style: TextStyle(
+                              fontSize: 27,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
                       ),
                       FittedBox(
                         child: Card(
                           shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  color: Color.fromARGB(255, 228, 57, 27)),
+                              side: const BorderSide(color: Colors.indigo),
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
@@ -142,7 +149,7 @@ class ProfileScreen extends StatelessWidget {
                                           const SizedBox(
                                             height: 30,
                                           ),
-                                          Text(value.students[index].address,
+                                          Text(value.students[index].number,
                                               style: const TextStyle(
                                                   fontSize: 17)),
                                         ],

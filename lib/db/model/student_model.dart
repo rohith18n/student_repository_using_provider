@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
-part 'data_model.g.dart';
-
+part 'student_model.g.dart';
 
 @HiveType(typeId: 1)
 class StudentModel {
@@ -22,13 +21,12 @@ class StudentModel {
   @HiveField(5)
   final String number;
 
-  StudentModel(
-      {required this.profile,
-      required this.name,
-      required this.age,
-      required this.address,
-      required this.number,
-      this.id,});
-
-  
+  StudentModel({
+    required this.profile,
+    required this.name,
+    required this.age,
+    required this.address,
+    required this.number,
+    this.id,
+  });
 }

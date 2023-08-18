@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../db/model/data_model.dart';
+import '../db/model/student_model.dart';
 import '../db/providers/image_provide.dart';
 import '../db/providers/student_provider.dart';
 
@@ -142,7 +142,7 @@ class _EditStudentState extends State<EditStudent> {
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
-                          prefixIcon: Icon(Icons.details)),
+                          prefixIcon: Icon(Icons.home)),
                       validator: (value) {
                         if (addresscntrl.text.isEmpty) {
                           return 'Address field is Empty';
@@ -178,13 +178,13 @@ class _EditStudentState extends State<EditStudent> {
                       height: 30,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(130, 50),
+                              fixedSize: const Size(120, 38),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
+                                  borderRadius: BorderRadius.circular(10)),
                               backgroundColor: Colors.red,
                             ),
                             onPressed: () {
@@ -194,9 +194,9 @@ class _EditStudentState extends State<EditStudent> {
                             label: const Text('Cancel')),
                         ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(130, 50),
+                                fixedSize: const Size(120, 38),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
+                                    borderRadius: BorderRadius.circular(10)),
                                 backgroundColor: Colors.green[600]),
                             onPressed: () {
                               final tempImageProvider =
@@ -230,13 +230,13 @@ class _EditStudentState extends State<EditStudent> {
 
   void addingFailed() {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Please Add The Profile Picture!'),
+      content: Text('Please add photo !'),
       backgroundColor: Colors.red,
       margin: EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,
       showCloseIcon: true,
       closeIconColor: Colors.white,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 3),
     ));
   }
 
@@ -254,7 +254,7 @@ class _EditStudentState extends State<EditStudent> {
     value2.tempImagePath = null;
     value2.notify();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("${namecntrl.text}'s details edittted successfully!"),
+      content: Text("${namecntrl.text}'s details updated successfully"),
       backgroundColor: Colors.green,
       margin: const EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,

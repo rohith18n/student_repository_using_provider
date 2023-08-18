@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import '../model/data_model.dart';
+import '../model/student_model.dart';
 
 class ProviderForStudent extends ChangeNotifier {
   List<StudentModel> students = [];

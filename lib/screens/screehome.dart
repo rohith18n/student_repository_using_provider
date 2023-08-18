@@ -17,7 +17,7 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Student Details',
+          'Student Repository',
         ),
         centerTitle: true,
         actions: [
@@ -36,7 +36,7 @@ class ScreenHome extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      backgroundColor: const Color.fromARGB(255, 237, 234, 233),
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: Column(
         children: [
@@ -78,8 +78,7 @@ class ScreenHome extends StatelessWidget {
                                       },
                                       icon: const Icon(
                                         Icons.delete,
-                                        color:
-                                            Color.fromARGB(255, 231, 132, 125),
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ],
@@ -114,7 +113,6 @@ class ScreenHome extends StatelessWidget {
           return AlertDialog(
             title: Text(
               'Do you want to delete ${value.students[index].name}',
-              style: const TextStyle(color: Colors.red),
             ),
             content: const Text(
                 'All the related datas will be cleared from the database'),
@@ -129,7 +127,10 @@ class ScreenHome extends StatelessWidget {
                     value.deleteStudent(index);
                     Navigator.of(ctx).pop();
                   },
-                  child: const Text("Yes"))
+                  child: const Text(
+                    "Yes",
+                    style: TextStyle(color: Colors.red),
+                  ))
             ],
           );
         });

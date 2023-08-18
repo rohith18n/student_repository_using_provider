@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_repository_using_provider/screens/widget.dart';
-import '../db/model/data_model.dart';
+import '../db/model/student_model.dart';
 import '../db/providers/image_provide.dart';
 import '../db/providers/student_provider.dart';
 
@@ -21,10 +21,10 @@ class AddStudent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTilte = 'Student Form';
+    const appTitle = "Add Student's Details";
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTilte),
+        title: const Text(appTitle),
       ),
       body: SafeArea(
           child: Padding(
@@ -43,10 +43,10 @@ class AddStudent extends StatelessWidget {
                                 ? const CircleAvatar(
                                     backgroundImage:
                                         AssetImage('assets/man.jpg'),
-                                    radius: 65,
+                                    radius: 100,
                                   )
                                 : CircleAvatar(
-                                    radius: 65,
+                                    radius: 100,
                                     backgroundImage: FileImage(
                                       File(value.tempImagePath!),
                                     ),
@@ -98,7 +98,7 @@ class AddStudent extends StatelessWidget {
                   TextFormField(
                     controller: addresscntrl,
                     keyboardType: TextInputType.streetAddress,
-                    decoration: Custom('Address', Icons.details),
+                    decoration: Custom('Address', Icons.home),
                     validator: (value) {
                       if (addresscntrl.text.isEmpty) {
                         return 'Address Field is Empty';
@@ -152,13 +152,13 @@ class AddStudent extends StatelessWidget {
 
   void addingFailed(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text("Please add the pofile picture!"),
+      content: Text("Please add your photo!"),
       backgroundColor: Colors.red,
       margin: EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,
       showCloseIcon: true,
       closeIconColor: Colors.white,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 3),
     ));
   }
 
@@ -174,13 +174,13 @@ class AddStudent extends StatelessWidget {
     value.addStudent(st);
     // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('${namecntrl.text} is added to database successfully!'),
+      content: Text('${namecntrl.text} is added to your repository'),
       backgroundColor: Colors.green,
       margin: const EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,
       showCloseIcon: true,
       closeIconColor: Colors.white,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 3),
     ));
     value2.tempImagePath = null;
     value2.notify();
