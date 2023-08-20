@@ -53,7 +53,7 @@ class _EditStudentState extends State<EditStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit ${namecntrl.text}'),
+        title: Text('Edit Profile of ${namecntrl.text}'),
       ),
       body: SafeArea(
         child: Padding(
@@ -86,7 +86,7 @@ class _EditStudentState extends State<EditStudent> {
                           getimage(value2);
                         },
                         icon: const Icon(Icons.photo),
-                        label: const Text('Add Photo')),
+                        label: const Text('Add your Photo')),
                     const SizedBox(
                       height: 10,
                     ),
@@ -103,7 +103,7 @@ class _EditStudentState extends State<EditStudent> {
                           prefixIcon: Icon(Icons.person)),
                       validator: (value) {
                         if (namecntrl.text.isEmpty) {
-                          return 'name field is Empty';
+                          return 'Enter your Name';
                         }
                         return null;
                       },
@@ -124,7 +124,7 @@ class _EditStudentState extends State<EditStudent> {
                           prefixIcon: Icon(Icons.calendar_month)),
                       validator: (value) {
                         if (agecntrl.text.isEmpty) {
-                          return 'Age field is Empty';
+                          return 'Enter your Age';
                         }
                         return null;
                       },
@@ -145,7 +145,7 @@ class _EditStudentState extends State<EditStudent> {
                           prefixIcon: Icon(Icons.home)),
                       validator: (value) {
                         if (addresscntrl.text.isEmpty) {
-                          return 'Address field is Empty';
+                          return 'Enter your Address';
                         }
                         return null;
                       },
@@ -167,7 +167,7 @@ class _EditStudentState extends State<EditStudent> {
                       maxLength: 10,
                       validator: (value) {
                         if (numbercntrl.text.isEmpty) {
-                          return 'Phone field is Empty';
+                          return 'Enter your Phone Number';
                         } else if (numbercntrl.text.length < 10) {
                           return 'Enter a valid Phone Number';
                         }

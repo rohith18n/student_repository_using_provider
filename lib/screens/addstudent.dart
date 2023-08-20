@@ -72,7 +72,7 @@ class AddStudent extends StatelessWidget {
                     decoration: Custom('Name', Icons.person),
                     validator: (value) {
                       if (namecntrl.text.isEmpty) {
-                        return 'Name Field is Empty';
+                        return 'Enter your Name';
                       }
                       return null;
                     },
@@ -87,7 +87,7 @@ class AddStudent extends StatelessWidget {
                     maxLength: 3,
                     validator: (value) {
                       if (agecntrl.text.isEmpty) {
-                        return 'Age Field is Empty';
+                        return 'Enter your Age';
                       }
                       return null;
                     },
@@ -101,7 +101,7 @@ class AddStudent extends StatelessWidget {
                     decoration: Custom('Address', Icons.home),
                     validator: (value) {
                       if (addresscntrl.text.isEmpty) {
-                        return 'Address Field is Empty';
+                        return 'Enter your Address';
                       }
                       return null;
                     },
@@ -116,9 +116,9 @@ class AddStudent extends StatelessWidget {
                     maxLength: 10,
                     validator: (value) {
                       if (numbercntrl.text.isEmpty) {
-                        return 'Phone Field is Empty';
+                        return 'Enter your Phone Number';
                       } else if (numbercntrl.text.length < 10) {
-                        return 'Enter a valid Phone number';
+                        return 'Enter a valid Phone Number';
                       }
                       return null;
                     },
@@ -134,7 +134,11 @@ class AddStudent extends StatelessWidget {
                               if (value.tempImagePath == null) {
                                 addingFailed(context);
                               } else {
-                                addingSuccess(value2, context, value);
+                                addingSuccess(
+                                  value,
+                                  value2,
+                                  context,
+                                );
                               }
                             }
                           },
@@ -152,7 +156,7 @@ class AddStudent extends StatelessWidget {
 
   void addingFailed(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text("Please add your photo!"),
+      content: Text("Please add your Photo!"),
       backgroundColor: Colors.red,
       margin: EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,
@@ -162,19 +166,22 @@ class AddStudent extends StatelessWidget {
     ));
   }
 
-  void addingSuccess(ProviderForStudent value, BuildContext context,
-      TempImageProvider value2) async {
+  void addingSuccess(
+    TempImageProvider value,
+    ProviderForStudent value2,
+    BuildContext context,
+  ) async {
     StudentModel st = StudentModel(
-      profile: value2.tempImagePath!,
+      profile: value.tempImagePath!,
       name: namecntrl.text.trim(),
       age: agecntrl.text.trim(),
       address: addresscntrl.text.trim(),
       number: numbercntrl.text.trim(),
     );
-    value.addStudent(st);
+    value2.addStudent(st);
     // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('${namecntrl.text} is added to your repository'),
+      content: Text('${namecntrl.text} details are added to your repository'),
       backgroundColor: Colors.green,
       margin: const EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,
@@ -182,8 +189,8 @@ class AddStudent extends StatelessWidget {
       closeIconColor: Colors.white,
       duration: const Duration(seconds: 3),
     ));
-    value2.tempImagePath = null;
-    value2.notify();
+    value.tempImagePath = null;
+    value.notify();
     Navigator.of(context).pop();
   }
 
